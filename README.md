@@ -18,3 +18,5 @@ Phase 2:
 - Watchlist page
 - Implement "Delete from Watchlist" functionality
 
+Phase 3:
+- Navbar
