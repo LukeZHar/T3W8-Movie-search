@@ -1,20 +1,23 @@
 // import './App.css'
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import Home from './pages/Home.jsx';
+import WatchlistProvider from './context/WatchlistContext.jsx';
+import Watchlist from './pages/Watchlist.jsx';
 
 function App() {
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/watchlist" element={<div> Watchlist </div>} />
-        <Route path="/details/:id" element={<div> Details </div>} />
-
-      </Routes>
-    </Router>
+    <WatchlistProvider>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/watchlist' element={<Watchlist />} />
+          <Route path='/details/:id' element={<div>Details</div>} />
+        </Routes>
+      </Router>
+    </WatchlistProvider>
   )
-};
+}
 
-export default App
+export default App;

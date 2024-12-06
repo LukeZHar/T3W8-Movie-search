@@ -1,50 +1,53 @@
 import axios from "axios";
 import React, { useState } from "react";
 import MovieCard from "../components/MovieCard";
+import { Link } from "react-router-dom";
 
 export default function Home() {
-    const [query, setQuery] = useState("");
+    const [query, setQuery] = useState('');
     const [movies, setMovies] = useState([]);
 
     const fetchMovies = async () => {
-        //     // Using fetch
-        //     const response = await fetch(`http://www.omdbapi.com/${apikey}=${query}`);
+        // Using fetch()
+        // const response = await fetch(`http://www.omdbapi.com/${apikey}/${query}`); 
 
-        //     // Using axios
-
+        // Using axios()
         if (query) {
             const response = await axios.get(`http://www.omdbapi.com/`, {
                 params: {
-                    apikey: "acba535",
+                    apikey: 'acba535',
                     s: query
                 }
             });
             console.log(response.data);
             setMovies(response.data.Search || []);
         }
-    }
+    };
 
     return (
         <div className="container my-4">
+
             <h1 className="text-center mb-4">Movie Search</h1>
             <div className="row">
                 <div className="col-md-8 offset-md-4">
                     <input
                         type="text"
-                        placeholder="Search for a movie..."
+                        placeholder="Search for Movies..."
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
                     />
                     <button className="btn btn-primary btn-block mt-2" onClick={fetchMovies}>Search</button>
                 </div>
+
+                <Link to='/watchlist'>Watchlist</Link>
             </div>
             <div className="row mt-4">
                 {
                     movies.map((movie) => (
-                        <MovieCard key={movie.imbdID} movie={movie} />
+                        <MovieCard key={movie.imdbID} movie={movie} />
                     ))
                 }
             </div>
         </div>
     )
-};
+}

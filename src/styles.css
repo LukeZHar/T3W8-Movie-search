@@ -8,12 +8,11 @@ body {
     border-radius: 5px;
     padding: 10px;
     background: white;
-    justify-content: center;
+    margin-bottom: 20px;
+    
 }
 
 .movie-card img {
     max-width: 100%;
-    height: auto;
     border-radius: 5px;
-
 }
