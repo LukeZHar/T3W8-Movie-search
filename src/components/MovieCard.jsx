@@ -12,7 +12,7 @@ export default function MovieCard({movie}){
             <p>{movie.Year}</p>
             <img src={movie.Poster} alt={`${movie.Title} Poster`} className="card-img-top" />
             <button onClick={() => addToWatchlist(movie)}>Add to Watchlist</button>
-            <Link className="btn btn-primary">View Details</Link>
+            <Link to={`/details/${movie.imdbID}`} className="btn btn-primary">View Details</Link>
         </div>
     )
 }
