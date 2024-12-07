@@ -4,14 +4,23 @@ import { Link } from "react-router-dom";
 
 export default function MovieCard({movie}){
 
-    const { addToWatchlist } = useWatchlist();
+    const { watchlist, addToWatchlist } = useWatchlist();
+
+    const isInWatchlist = watchlist.some((item) => item.imdbID === movie.imdbID);
 
     return (
-        <div className="col-md-4 movie-card style=" style={{maxWidth: "18rem"}}>
+        <div className="col-md-4 movie-card" style={{maxWidth: '18rem'}}>
             <h3>{movie.Title}</h3>
             <p>{movie.Year}</p>
-            <img src={movie.Poster} alt={`${movie.Title} Poster`} className="card-img-top" />
-            <button onClick={() => addToWatchlist(movie)}>Add to Watchlist</button>
+            <img 
+            src={movie.Poster} 
+            alt={`${movie.Title} Poster`} 
+            className='card-img-top'/>
+            <button 
+            className={`btn ${isInWatchlist ? 'btn-success' : 'btn-primary'}`} 
+            onClick={() => !isInWatchlist && addToWatchlist(movie)}
+            disabled={isInWatchlist}
+            >Add to Watchlist</button>
             <Link to={`/details/${movie.imdbID}`} className="btn btn-primary">View Details</Link>
         </div>
     )

@@ -42,7 +42,11 @@ export default function Details() {
             <button className="btn btn-secondary mb-3" onClick={() => Navigate(-1)}>Go Back</button>
             <h2>{movieDetails.Title}</h2>
             <p>{movieDetails.Year}</p>
-            <img src={movieDetails.Poster.replace('SX300', 'SX700')} alt={`${movieDetails.Title} Poster`} className="card-img-top" style={{width: "300px"}}/>
+            <img 
+            src={movieDetails.Poster.replace('SX300', 'SX700')} 
+            alt={`${movieDetails.Title} Poster`} 
+            className="card-img-top" 
+            style={{width: "300px"}}/>
             <p><strong>Genre:</strong> {movieDetails.Genre} </p>
             <p><strong>Plot:</strong> {movieDetails.Plot} </p>
             <p><strong>Actors:</strong> {movieDetails.Actors} </p>
