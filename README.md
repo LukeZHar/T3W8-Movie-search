@@ -23,3 +23,5 @@ Phase 3:
 - Details page for each movie
 - Disable "Add to Watchlist" button after adding
 - Notification context component
+
+Note: make sure you create a .env file in the root and provide your unique API key

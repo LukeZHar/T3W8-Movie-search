@@ -3,14 +3,15 @@ import { useNavigate, useParams } from "react-router-dom";
 
 export default function Details() {
     const { id } = useParams();
-    const Navigate = useNavigate();
+    const navigate = useNavigate();
     const [movieDetails, setMovieDetails] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchMovieDetails = async () => {
+            const apikey = import.meta.env.VITE_API_KEY;
             try {
-                const response = await fetch(`http://www.omdbapi.com/?apikey=acba535&i=${id}&plot=full`);
+                const response = await fetch(`http://www.omdbapi.com/?apikey=${apikey}&i=${id}&plot=full`);
                 const data = await response.json();
 
                 if (data.Response === "True") {
