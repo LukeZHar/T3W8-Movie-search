@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-export default function Details() {
+export default function Details(){
     const { id } = useParams();
     const navigate = useNavigate();
     const [movieDetails, setMovieDetails] = useState(null);
@@ -11,7 +11,7 @@ export default function Details() {
         const fetchMovieDetails = async () => {
             const apikey = import.meta.env.VITE_API_KEY;
             try {
-                const response = await fetch(`http://www.omdbapi.com/?apikey=${apikey}&i=${id}&plot=full`);
+                const response = await fetch(`https://www.omdbapi.com/?apikey=${apikey}&i=${id}&plot=full`);
                 const data = await response.json();
 
                 if (data.Response === "True") {

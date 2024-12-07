@@ -1,12 +1,12 @@
 import React from "react";
 import { useNotification } from "../context/NotificationContext";
 
-export default function NotificationBar() {
+export default function NotificationBar(){
     const { notification } = useNotification();
 
-    if (!notification)
+    if (!notification) 
         return null;
-
+    
     return (
         <div
             style={{
