@@ -22,3 +22,4 @@ Phase 3:
 - Navbar
 - Details page for each movie
 - Disable "Add to Watchlist" button after adding
+- Notification context component

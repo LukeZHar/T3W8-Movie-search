@@ -16,11 +16,13 @@ export default function MovieCard({movie}){
             src={movie.Poster} 
             alt={`${movie.Title} Poster`} 
             className='card-img-top'/>
-            <button 
-            className={`btn ${isInWatchlist ? 'btn-success' : 'btn-primary'}`} 
+            <button
+            className={`btn ${isInWatchlist ? `btn-success` : `btn-primary`}`} 
             onClick={() => !isInWatchlist && addToWatchlist(movie)}
             disabled={isInWatchlist}
-            >Add to Watchlist</button>
+            >
+                {isInWatchlist ? `Added to Watchlist` : `Add to Watchlist`}
+            </button>
             <Link to={`/details/${movie.imdbID}`} className="btn btn-primary">View Details</Link>
         </div>
     )

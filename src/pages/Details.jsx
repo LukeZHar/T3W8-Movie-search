@@ -13,40 +13,39 @@ export default function Details() {
                 const response = await fetch(`http://www.omdbapi.com/?apikey=acba535&i=${id}&plot=full`);
                 const data = await response.json();
 
-                if (data.Response === 'True') {
+                if (data.Response === "True") {
                     setMovieDetails(data);
                 } else {
                     setMovieDetails(null);
                 }
-
             } catch (error) {
-                console.error('Error fetching movie details:', error);
+                console.error("Failed to fetch movie details", error);
             } finally {
                 setLoading(false);
             }
         }
-
         fetchMovieDetails();
     }, [id]);
 
     if (loading) {
-        return <p>Loading...</p>;
+        return <p>Loading...</p>
     }
 
     if (!movieDetails) {
-        return <p>Movie details not found.</p>;
+        return <p>Movie details not found!</p>
     }
 
-    return (
+    return(
         <div className="container mt-4">
-            <button className="btn btn-secondary mb-3" onClick={() => Navigate(-1)}>Go Back</button>
+            <button className="btn btn-secondary mb-3" onClick={() => navigate(-1)}>Go back</button>
             <h2>{movieDetails.Title}</h2>
             <p>{movieDetails.Year}</p>
             <img 
             src={movieDetails.Poster.replace('SX300', 'SX700')} 
             alt={`${movieDetails.Title} Poster`} 
-            className="card-img-top" 
-            style={{width: "300px"}}/>
+            className='card-img-top'
+            style={{ width: '300px'}}
+            />
             <p><strong>Genre:</strong> {movieDetails.Genre} </p>
             <p><strong>Plot:</strong> {movieDetails.Plot} </p>
             <p><strong>Actors:</strong> {movieDetails.Actors} </p>
